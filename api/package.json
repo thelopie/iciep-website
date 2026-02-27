@@ -1,0 +1,12 @@
+{
+  "name": "ici-equity-partners-api",
+  "version": "1.0.0",
+  "description": "Azure Functions API for ICI Equity Partners",
+  "scripts": {
+    "test": "echo \"No tests yet\""
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.0"
+  },
+  "devDependencies": {}
+}

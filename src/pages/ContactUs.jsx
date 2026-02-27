@@ -11,20 +11,47 @@ const ContactUs = () => {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    // Clear error when user types
+    if (error) setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real app, this would send to a backend
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      setSubmitted(true);
+      setFormData({ name: '', email: '', phone: '', message: '' });
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (err) {
+      console.error('Error submitting form:', err);
+      setError(err.message || 'Failed to send message. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -91,7 +118,24 @@ const ContactUs = () => {
                       }}
                     >
                       <Typography sx={{ color: 'success.dark', fontWeight: 600 }}>
-                        Thank you! Your message has been sent.
+                        ✓ Thank you! Your message has been sent.
+                      </Typography>
+                    </Box>
+                  )}
+
+                  {error && (
+                    <Box
+                      sx={{
+                        mb: 3,
+                        p: 2,
+                        bgcolor: 'rgba(211, 47, 47, 0.1)',
+                        border: '1px solid',
+                        borderColor: 'error.main',
+                        borderRadius: '8px',
+                      }}
+                    >
+                      <Typography sx={{ color: 'error.dark', fontWeight: 600 }}>
+                        {error}
                       </Typography>
                     </Box>
                   )}
@@ -141,8 +185,9 @@ const ContactUs = () => {
                       color="primary"
                       size="large"
                       fullWidth
+                      disabled={loading}
                     >
-                      Send
+                      {loading ? 'Sending...' : 'Send Message'}
                     </Button>
                   </Box>
                 </Paper>
