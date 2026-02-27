@@ -1,4 +1,4 @@
-const { SESClient, SendEmailCommand } = require('@aws-sdk/client-ses');
+const { EmailClient } = require('@azure/communication-email');
 
 module.exports = async function (context, req) {
     context.log('Contact form submission received');
@@ -41,13 +41,11 @@ module.exports = async function (context, req) {
     }
 
     try {
-        // Initialize AWS SES
-        const awsRegion = process.env.AWS_REGION || 'us-east-1';
-        const awsAccessKeyId = process.env.AWS_ACCESS_KEY_ID;
-        const awsSecretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+        // Initialize Azure Communication Services Email
+        const connectionString = process.env.AZURE_COMMUNICATION_CONNECTION_STRING;
 
-        if (!awsAccessKeyId || !awsSecretAccessKey) {
-            context.log.error('AWS credentials not configured');
+        if (!connectionString) {
+            context.log.error('Azure Communication Services connection string not configured');
             context.res.status = 500;
             context.res.body = {
                 error: 'Email service not configured'
@@ -55,13 +53,7 @@ module.exports = async function (context, req) {
             return;
         }
 
-        const sesClient = new SESClient({
-            region: awsRegion,
-            credentials: {
-                accessKeyId: awsAccessKeyId,
-                secretAccessKey: awsSecretAccessKey
-            }
-        });
+        const emailClient = new EmailClient(connectionString);
 
         // Prepare email content
         const htmlBody = `
@@ -126,36 +118,26 @@ ${message}
 Submitted from: ICI Equity Partners Contact Form
         `.trim();
 
-        const fromEmail = process.env.SES_FROM_EMAIL || 'noreply@lopie.dev';
-        const toEmail = process.env.SES_TO_EMAIL || 'josh@lopie.dev';
+        const fromEmail = process.env.AZURE_COMMUNICATION_FROM_EMAIL || 'DoNotReply@your-domain.azurecomm.net';
+        const toEmail = process.env.AZURE_COMMUNICATION_TO_EMAIL || 'josh@lopie.dev';
 
-        const sendEmailCommand = new SendEmailCommand({
-            Source: fromEmail,
-            Destination: {
-                ToAddresses: [toEmail]
+        const emailMessage = {
+            senderAddress: fromEmail,
+            content: {
+                subject: `ICI Contact Form: ${name}`,
+                plainText: textBody,
+                html: htmlBody
             },
-            Message: {
-                Subject: {
-                    Data: `ICI Contact Form: ${name}`,
-                    Charset: 'UTF-8'
-                },
-                Body: {
-                    Text: {
-                        Data: textBody,
-                        Charset: 'UTF-8'
-                    },
-                    Html: {
-                        Data: htmlBody,
-                        Charset: 'UTF-8'
-                    }
-                }
+            recipients: {
+                to: [{ address: toEmail }]
             },
-            ReplyToAddresses: [email]
-        });
+            replyTo: [{ address: email }]
+        };
 
-        // Send email via SES
-        const response = await sesClient.send(sendEmailCommand);
-        context.log('Email sent successfully via SES:', response.MessageId);
+        // Send email via Azure Communication Services
+        const poller = await emailClient.beginSend(emailMessage);
+        const response = await poller.pollUntilDone();
+        context.log('Email sent successfully via Azure Communication Services:', response.id);
 
         context.res.status = 200;
         context.res.body = {
@@ -164,7 +146,7 @@ Submitted from: ICI Equity Partners Contact Form
         };
 
     } catch (error) {
-        context.log.error('Error sending email via SES:', error);
+        context.log.error('Error sending email via Azure Communication Services:', error);
 
         context.res.status = 500;
         context.res.body = {
