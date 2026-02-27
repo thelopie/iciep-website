@@ -1,4 +1,4 @@
-const sgMail = require('@sendgrid/mail');
+const { SESClient, SendEmailCommand } = require('@aws-sdk/client-ses');
 
 module.exports = async function (context, req) {
     context.log('Contact form submission received');
@@ -41,11 +41,13 @@ module.exports = async function (context, req) {
     }
 
     try {
-        // Initialize SendGrid
-        const sendGridApiKey = process.env.SENDGRID_API_KEY;
+        // Initialize AWS SES
+        const awsRegion = process.env.AWS_REGION || 'us-east-1';
+        const awsAccessKeyId = process.env.AWS_ACCESS_KEY_ID;
+        const awsSecretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 
-        if (!sendGridApiKey) {
-            context.log.error('SendGrid API key not configured');
+        if (!awsAccessKeyId || !awsSecretAccessKey) {
+            context.log.error('AWS credentials not configured');
             context.res.status = 500;
             context.res.body = {
                 error: 'Email service not configured'
@@ -53,28 +55,16 @@ module.exports = async function (context, req) {
             return;
         }
 
-        sgMail.setApiKey(sendGridApiKey);
+        const sesClient = new SESClient({
+            region: awsRegion,
+            credentials: {
+                accessKeyId: awsAccessKeyId,
+                secretAccessKey: awsSecretAccessKey
+            }
+        });
 
         // Prepare email content
-        const emailContent = {
-            to: 'josh@lopie.dev', // Recipient email
-            from: process.env.SENDGRID_FROM_EMAIL || 'noreply@lopie.dev', // Verified sender
-            replyTo: email, // User's email for easy reply
-            subject: `ICI Contact Form: ${name}`,
-            text: `
-New contact form submission from ICI Equity Partners website
-
-Name: ${name}
-Email: ${email}
-Phone: ${phone || 'Not provided'}
-
-Message:
-${message}
-
----
-Submitted from: ICI Equity Partners Contact Form
-            `.trim(),
-            html: `
+        const htmlBody = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,14 +110,52 @@ Submitted from: ICI Equity Partners Contact Form
         </div>
     </div>
 </body>
-</html>
-            `.trim()
-        };
+</html>`.trim();
 
-        // Send email
-        await sgMail.send(emailContent);
+        const textBody = `
+New contact form submission from ICI Equity Partners website
 
-        context.log('Email sent successfully');
+Name: ${name}
+Email: ${email}
+Phone: ${phone || 'Not provided'}
+
+Message:
+${message}
+
+---
+Submitted from: ICI Equity Partners Contact Form
+        `.trim();
+
+        const fromEmail = process.env.SES_FROM_EMAIL || 'noreply@lopie.dev';
+        const toEmail = process.env.SES_TO_EMAIL || 'josh@lopie.dev';
+
+        const sendEmailCommand = new SendEmailCommand({
+            Source: fromEmail,
+            Destination: {
+                ToAddresses: [toEmail]
+            },
+            Message: {
+                Subject: {
+                    Data: `ICI Contact Form: ${name}`,
+                    Charset: 'UTF-8'
+                },
+                Body: {
+                    Text: {
+                        Data: textBody,
+                        Charset: 'UTF-8'
+                    },
+                    Html: {
+                        Data: htmlBody,
+                        Charset: 'UTF-8'
+                    }
+                }
+            },
+            ReplyToAddresses: [email]
+        });
+
+        // Send email via SES
+        const response = await sesClient.send(sendEmailCommand);
+        context.log('Email sent successfully via SES:', response.MessageId);
 
         context.res.status = 200;
         context.res.body = {
@@ -136,7 +164,7 @@ Submitted from: ICI Equity Partners Contact Form
         };
 
     } catch (error) {
-        context.log.error('Error sending email:', error);
+        context.log.error('Error sending email via SES:', error);
 
         context.res.status = 500;
         context.res.body = {
