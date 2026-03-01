@@ -3,6 +3,7 @@ import { ThemeProvider, CssBaseline, Box } from '@mui/material';
 import theme from './theme';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import Philosophy from './pages/Philosophy';
 import Approach from './pages/Approach';
@@ -17,6 +18,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
+        <ScrollToTop />
         <Box
           sx={{
             display: 'flex',
