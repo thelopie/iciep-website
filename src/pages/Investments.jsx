@@ -1,10 +1,19 @@
+import { useEffect } from 'react';
 import { Box, Container, Typography, Paper, Fade } from '@mui/material';
 import PendingIcon from '@mui/icons-material/Pending';
+import SEO from '../components/SEO';
 
 const Investments = () => {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.dispatchEvent(new Event('render-event'));
+    }
+  }, []);
+
   return (
     <Fade in timeout={800}>
       <Box>
+        <SEO pathname="/investments" />
         {/* Hero Banner */}
         <Box
           sx={{

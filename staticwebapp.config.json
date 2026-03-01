@@ -1,9 +1,27 @@
 {
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/images/*.{png,jpg,gif,ico,svg}", "/css/*", "/js/*", "/api/*"]
+    "exclude": [
+      "/images/*.{png,jpg,gif,ico,svg}",
+      "/css/*",
+      "/js/*",
+      "/api/*",
+      "/*.{xml,txt,json,ico,svg,png,webmanifest}"
+    ]
   },
   "routes": [
+    {
+      "route": "/sitemap.xml",
+      "headers": {
+        "content-type": "application/xml; charset=utf-8"
+      }
+    },
+    {
+      "route": "/robots.txt",
+      "headers": {
+        "content-type": "text/plain"
+      }
+    },
     {
       "route": "/api/*",
       "allowedRoles": ["anonymous"]
@@ -18,10 +36,14 @@
     ".json": "application/json",
     ".js": "text/javascript",
     ".css": "text/css",
-    ".html": "text/html"
+    ".html": "text/html",
+    ".xml": "application/xml",
+    ".webmanifest": "application/manifest+json"
   },
   "globalHeaders": {
-    "cache-control": "must-revalidate, max-age=3600"
+    "cache-control": "public, max-age=3600",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY"
   },
   "responseOverrides": {
     "404": {

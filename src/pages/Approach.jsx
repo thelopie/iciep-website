@@ -1,7 +1,10 @@
+import { useEffect } from 'react';
 import { Box, Container, Typography, Button, Paper, Grid, Fade } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import SEO from '../components/SEO';
 
 const featureCards = [
   {
@@ -25,9 +28,18 @@ const featureCards = [
 ];
 
 const Approach = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.dispatchEvent(new Event('render-event'));
+    }
+  }, []);
+
   return (
     <Fade in timeout={800}>
       <Box>
+        <SEO pathname="/approach" />
         {/* Hero Banner */}
         <Box
           sx={{
@@ -326,12 +338,14 @@ const Approach = () => {
                 variant="contained"
                 color="primary"
                 size="large"
+                onClick={() => navigate('/contact-us')}
               >
                 Get Started
               </Button>
               <Button
                 variant="outlined"
                 size="large"
+                onClick={() => navigate('/investments')}
                 sx={{
                   color: 'white',
                   borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -341,7 +355,7 @@ const Approach = () => {
                   },
                 }}
               >
-                View Philosophy
+                View Our Work
               </Button>
             </Box>
           </Container>

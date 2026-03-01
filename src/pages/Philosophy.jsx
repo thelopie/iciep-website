@@ -1,14 +1,23 @@
+import { useEffect } from 'react';
 import { Box, Container, Typography, Button, Paper, Fade, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import TimelineIcon from '@mui/icons-material/Timeline';
+import SEO from '../components/SEO';
 
 const Philosophy = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.dispatchEvent(new Event('render-event'));
+    }
+  }, []);
+
   return (
     <Fade in timeout={800}>
       <Box>
+        <SEO pathname="/philosophy" />
         {/* Hero Banner */}
         <Box
           sx={{

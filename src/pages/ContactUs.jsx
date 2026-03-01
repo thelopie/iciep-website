@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Container, Typography, TextField, Button, Paper, Fade, Grid } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import SEO from '../components/SEO';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -54,9 +55,16 @@ const ContactUs = () => {
     }
   };
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.dispatchEvent(new Event('render-event'));
+    }
+  }, []);
+
   return (
     <Fade in timeout={800}>
       <Box>
+        <SEO pathname="/contact-us" />
         {/* Hero Banner */}
         <Box
           sx={{

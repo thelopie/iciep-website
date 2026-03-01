@@ -1,9 +1,18 @@
+import { useEffect } from 'react';
 import { Box, Container, Typography, Fade, Paper } from '@mui/material';
+import SEO from '../components/SEO';
 
 const PrivacyPolicy = () => {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.dispatchEvent(new Event('render-event'));
+    }
+  }, []);
+
   return (
     <Fade in timeout={800}>
       <Box>
+        <SEO pathname="/privacy-policy" />
         {/* Hero Banner */}
         <Box
           sx={{

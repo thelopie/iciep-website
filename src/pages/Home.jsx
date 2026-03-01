@@ -1,11 +1,20 @@
+import { useEffect } from 'react';
 import { Box, Container, Typography, Button, Paper, Fade, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import SEO from '../components/SEO';
 
 const Home = () => {
   const navigate = useNavigate();
+
+  // Dispatch render event for prerendering
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.dispatchEvent(new Event('render-event'));
+    }
+  }, []);
 
   const features = [
     {
@@ -28,6 +37,7 @@ const Home = () => {
   return (
     <Fade in timeout={800}>
       <Box>
+        <SEO pathname="/" />
         {/* Hero Section */}
         <Box
           sx={{
