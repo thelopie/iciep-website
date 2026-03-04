@@ -4,7 +4,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import SEO from '../components/SEO';
 
-const ContactUs = () => {
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,7 +20,6 @@ const ContactUs = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
-    // Clear error when user types
     if (error) setError('');
   };
 
@@ -98,7 +97,7 @@ const ContactUs = () => {
                 fontWeight: 400,
               }}
             >
-              We'd love to hear from you. Reach out to discuss partnership opportunities.
+              For investment opportunities or partnership inquiries, please contact us.
             </Typography>
           </Container>
         </Box>
@@ -126,7 +125,7 @@ const ContactUs = () => {
                       }}
                     >
                       <Typography sx={{ color: 'success.dark', fontWeight: 600 }}>
-                        ✓ Thank you! Your message has been sent.
+                        Thank you! Your message has been sent.
                       </Typography>
                     </Box>
                   )}
@@ -213,8 +212,8 @@ const ContactUs = () => {
                     sx={{
                       p: 4,
                       mb: 3,
-                      bgcolor: 'rgba(192, 57, 43, 0.05)',
-                      border: '1px solid rgba(192, 57, 43, 0.1)',
+                      bgcolor: 'rgba(228, 61, 48, 0.05)',
+                      border: '1px solid rgba(228, 61, 48, 0.1)',
                     }}
                   >
                     <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, mb: 3 }}>
@@ -271,8 +270,9 @@ const ContactUs = () => {
                     }}
                   >
                     <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
-                      We partner with management teams to unlock value and drive sustainable growth.
-                      Contact us to explore how we can help your business reach its full potential.
+                      We partner with management teams to build and scale businesses that serve
+                      private equity firms and their portfolio companies. Contact us to explore
+                      how we can work together.
                     </Typography>
                   </Paper>
                 </Box>
@@ -285,4 +285,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default Contact;

@@ -1,10 +1,9 @@
 import { Box, Container, Typography, Button, Paper, Fade, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import BuildIcon from '@mui/icons-material/Build';
-import InsightsIcon from '@mui/icons-material/Insights';
+import CodeIcon from '@mui/icons-material/Code';
+import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
 
-const Approach = () => {
+const Focus = () => {
   const navigate = useNavigate();
 
   return (
@@ -14,7 +13,7 @@ const Approach = () => {
         <Box
           sx={{
             py: { xs: 8, md: 10 },
-            background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+            background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
             textAlign: 'center',
             position: 'relative',
             overflow: 'hidden',
@@ -23,13 +22,13 @@ const Approach = () => {
           <Box
             sx={{
               position: 'absolute',
-              top: '20%',
-              left: '10%',
-              width: 400,
-              height: 400,
+              top: '10%',
+              right: '10%',
+              width: 300,
+              height: 300,
               borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(228, 61, 48, 0.08) 0%, transparent 70%)',
-              filter: 'blur(60px)',
+              background: 'radial-gradient(circle, rgba(228, 61, 48, 0.1) 0%, transparent 70%)',
+              filter: 'blur(40px)',
             }}
           />
 
@@ -44,10 +43,10 @@ const Approach = () => {
                 display: 'block',
               }}
             >
-              APPROACH
+              FOCUS
             </Typography>
             <Typography variant="h1" sx={{ color: 'white', mb: 3 }}>
-              Our Approach
+              Our Focus
             </Typography>
             <Typography
               variant="h5"
@@ -58,9 +57,8 @@ const Approach = () => {
                 fontWeight: 400,
               }}
             >
-              We operate as an independent sponsor, structuring investments on a deal-by-deal basis
-              in partnership with aligned capital providers. Our model provides flexibility in transaction
-              structuring while maintaining a disciplined underwriting framework.
+              We invest exclusively in businesses that serve private equity firms and their portfolio companies.
+              Our sector specialization allows us to evaluate opportunities with speed, conviction, and operational insight.
             </Typography>
           </Container>
         </Box>
@@ -68,8 +66,23 @@ const Approach = () => {
         {/* Main Content - Single flowing section */}
         <Box sx={{ py: { xs: 6, md: 8 }, bgcolor: 'background.default' }}>
           <Container maxWidth="lg">
-            {/* Independent Sponsor Model & Operator-Led Ownership */}
-            <Grid container spacing={4} sx={{ mb: { xs: 5, md: 6 } }}>
+            {/* Sector Concentration */}
+            <Typography
+              variant="overline"
+              sx={{
+                color: 'primary.main',
+                fontWeight: 700,
+                letterSpacing: '0.15em',
+                mb: 4,
+                display: 'block',
+                textAlign: 'center',
+              }}
+            >
+              SECTOR CONCENTRATION
+            </Typography>
+
+            <Grid container spacing={4} sx={{ mb: { xs: 6, md: 8 } }}>
+              {/* SaaS for Private Equity */}
               <Grid item xs={12} md={6}>
                 <Paper
                   elevation={0}
@@ -96,22 +109,24 @@ const Approach = () => {
                       mb: 2,
                     }}
                   >
-                    <AccountBalanceIcon sx={{ fontSize: 32 }} />
+                    <CodeIcon sx={{ fontSize: 32 }} />
                   </Box>
 
                   <Typography variant="h5" sx={{ mb: 2, color: 'text.primary', fontWeight: 700 }}>
-                    Independent Sponsor Model
+                    SaaS for Private Equity
                   </Typography>
 
                   <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8, mb: 2 }}>
-                    Each investment is structured independently, allowing us to:
+                    Software platforms that support:
                   </Typography>
 
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mb: 2 }}>
                     {[
-                      'Align capital with opportunity',
-                      'Tailor transaction structures appropriately',
-                      'Maintain focus on long-term value creation',
+                      'Portfolio monitoring and reporting',
+                      'Fund operations and workflow automation',
+                      'Compliance and governance',
+                      'Data aggregation and analytics',
+                      'Operational performance tracking',
                     ].map((item, index) => (
                       <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                         <Box sx={{ width: 5, height: 5, borderRadius: '50%', bgcolor: 'primary.main', flexShrink: 0 }} />
@@ -121,11 +136,12 @@ const Approach = () => {
                   </Box>
 
                   <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500, lineHeight: 1.8 }}>
-                    We seek capital partners who share a long-term, partnership-oriented perspective.
+                    We prioritize mission-critical systems embedded in investment and portfolio processes.
                   </Typography>
                 </Paper>
               </Grid>
 
+              {/* Professional Services */}
               <Grid item xs={12} md={6}>
                 <Paper
                   elevation={0}
@@ -152,24 +168,23 @@ const Approach = () => {
                       mb: 2,
                     }}
                   >
-                    <BuildIcon sx={{ fontSize: 32 }} />
+                    <MiscellaneousServicesIcon sx={{ fontSize: 32 }} />
                   </Box>
 
                   <Typography variant="h5" sx={{ mb: 2, color: 'text.primary', fontWeight: 700 }}>
-                    Operator-Led Ownership
+                    Professional Services for PE & Portfolio Companies
                   </Typography>
 
                   <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8, mb: 2 }}>
-                    As founders and active owners, we take a hands-on role in:
+                    Specialized service providers that deliver measurable operational and financial impact, including:
                   </Typography>
 
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mb: 2 }}>
                     {[
-                      'Strategic direction',
-                      'Financial discipline and reporting',
-                      'Go-to-market refinement',
-                      'Organizational development',
-                      'Scalable infrastructure buildout',
+                      'Finance and accounting solutions',
+                      'Operational performance improvement',
+                      'Strategic advisory and execution support',
+                      'Technology-enabled outsourced services',
                     ].map((item, index) => (
                       <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                         <Box sx={{ width: 5, height: 5, borderRadius: '50%', bgcolor: 'primary.main', flexShrink: 0 }} />
@@ -179,43 +194,35 @@ const Approach = () => {
                   </Box>
 
                   <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500, lineHeight: 1.8 }}>
-                    Our involvement is practical and execution-focused.
+                    We focus on businesses with durable client relationships and recurring revenue characteristics.
                   </Typography>
                 </Paper>
               </Grid>
             </Grid>
 
-            {/* Value Creation Framework & Long-Term Alignment */}
+            {/* Investment Profile & Why This Niche */}
             <Grid container spacing={4}>
               <Grid item xs={12} md={6}>
-                <Box
+                <Typography
+                  variant="overline"
                   sx={{
-                    display: 'inline-flex',
-                    p: 1.5,
-                    borderRadius: '10px',
-                    bgcolor: 'rgba(228, 61, 48, 0.08)',
                     color: 'primary.main',
+                    fontWeight: 700,
+                    letterSpacing: '0.15em',
                     mb: 2,
+                    display: 'block',
                   }}
                 >
-                  <InsightsIcon sx={{ fontSize: 32 }} />
-                </Box>
-
-                <Typography variant="h5" sx={{ mb: 2, color: 'text.primary', fontWeight: 700 }}>
-                  Value Creation Framework
+                  INVESTMENT PROFILE
                 </Typography>
 
-                <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8, mb: 2 }}>
-                  We concentrate on initiatives that strengthen durability and scalability:
-                </Typography>
-
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, mt: 2 }}>
                   {[
-                    'Revenue model optimization',
-                    'Operational process improvement',
-                    'Talent alignment and accountability',
-                    'Data-driven performance management',
-                    'Strategic add-on opportunities where appropriate',
+                    'Lower middle market',
+                    'Control-oriented structures',
+                    'Founder transitions and platform builds',
+                    'Recurring or highly repeat business models',
+                    'Strong customer retention within the PE ecosystem',
                   ].map((item, index) => (
                     <Box
                       key={index}
@@ -251,17 +258,17 @@ const Approach = () => {
                   }}
                 >
                   <Typography variant="h5" sx={{ mb: 2, color: 'text.primary', fontWeight: 700 }}>
-                    Long-Term Alignment
+                    Why This Niche
                   </Typography>
 
                   <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8, mb: 2 }}>
-                    We prioritize alignment with management teams and seek to build enduring businesses
-                    within our sector focus.
+                    Private equity firms increasingly rely on specialized products and services to drive
+                    portfolio performance and manage complexity.
                   </Typography>
 
                   <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
-                    Our model allows for flexibility in transaction structuring while ensuring that
-                    incentives remain aligned across all stakeholders throughout the life of an investment.
+                    We believe this ecosystem presents a compelling opportunity for focused ownership
+                    and disciplined value creation.
                   </Typography>
                 </Paper>
               </Grid>
@@ -275,26 +282,11 @@ const Approach = () => {
             py: { xs: 6, md: 8 },
             background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
             textAlign: 'center',
-            position: 'relative',
-            overflow: 'hidden',
           }}
         >
-          <Box
-            sx={{
-              position: 'absolute',
-              bottom: '10%',
-              right: '15%',
-              width: 350,
-              height: 350,
-              borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(228, 61, 48, 0.12) 0%, transparent 70%)',
-              filter: 'blur(50px)',
-            }}
-          />
-
-          <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
+          <Container maxWidth="md">
             <Typography variant="h3" sx={{ mb: 2, color: 'white' }}>
-              Let's Talk
+              Ready to Connect?
             </Typography>
             <Typography
               variant="body1"
@@ -317,4 +309,4 @@ const Approach = () => {
   );
 };
 
-export default Approach;
+export default Focus;

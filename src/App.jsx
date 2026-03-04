@@ -5,10 +5,10 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
-import Philosophy from './pages/Philosophy';
+import Focus from './pages/Focus';
 import Approach from './pages/Approach';
-import Investments from './pages/Investments';
-import ContactUs from './pages/ContactUs';
+import Portfolio from './pages/Portfolio';
+import Contact from './pages/Contact';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
 import Disclaimer from './pages/Disclaimer';
@@ -30,10 +30,10 @@ function App() {
           <Box component="main" sx={{ flex: 1 }}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/philosophy" element={<Philosophy />} />
+              <Route path="/focus" element={<Focus />} />
+              <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/approach" element={<Approach />} />
-              <Route path="/investments" element={<Investments />} />
-              <Route path="/contact-us" element={<ContactUs />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-and-conditions" element={<TermsConditions />} />
               <Route path="/disclaimer" element={<Disclaimer />} />

@@ -109,9 +109,9 @@ const Disclaimer = () => {
                 sx={{
                   mt: 6,
                   p: 3,
-                  bgcolor: 'rgba(192, 57, 43, 0.05)',
+                  bgcolor: 'rgba(228, 61, 48, 0.05)',
                   borderRadius: '8px',
-                  border: '1px solid rgba(192, 57, 43, 0.1)',
+                  border: '1px solid rgba(228, 61, 48, 0.1)',
                 }}
               >
                 <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'center' }}>

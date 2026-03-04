@@ -4,9 +4,9 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#C0392B', // ICI Red
-      light: '#E74C3C',
-      dark: '#A93226',
+      main: '#E43D30', // ICI Red - Pantone 179 C
+      light: '#EC6459',
+      dark: '#C93328',
       contrastText: '#ffffff',
     },
     secondary: {
@@ -114,13 +114,13 @@ const theme = createTheme({
           '&:hover': {
             borderWidth: '1.5px',
             transform: 'translateY(-2px)',
-            boxShadow: '0 8px 16px -4px rgba(192, 57, 43, 0.25)',
+            boxShadow: '0 8px 16px -4px rgba(228, 61, 48, 0.25)',
           },
         },
         contained: {
           boxShadow: 'none',
           '&:hover': {
-            boxShadow: '0 8px 16px -4px rgba(192, 57, 43, 0.3)',
+            boxShadow: '0 8px 16px -4px rgba(228, 61, 48, 0.3)',
             transform: 'translateY(-2px)',
           },
         },

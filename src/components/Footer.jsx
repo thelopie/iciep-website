@@ -7,7 +7,7 @@ const footerLinks = [
   { label: 'Privacy Policy', href: '/privacy-policy' },
   { label: 'Terms & Conditions', href: '/terms-and-conditions' },
   { label: 'Disclaimer', href: '/disclaimer' },
-  { label: 'Contact Us', href: '/contact-us' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const socialLinks = [
@@ -37,6 +37,14 @@ const Footer = () => {
             gap: 3,
           }}
         >
+          {/* Logo */}
+          <Box
+            component="img"
+            src="/images/ici-logo-color.png"
+            alt="ICI Equity Partners"
+            sx={{ height: 48, width: 'auto' }}
+          />
+
           {/* Social Media Links */}
           <Box
             sx={{
@@ -107,7 +115,7 @@ const Footer = () => {
               textAlign: 'center',
             }}
           >
-            Copyright © 2021 ICI Equity Partners LLC. All Rights Reserved.
+            Copyright &copy; {new Date().getFullYear()} ICI Equity Partners LLC. All Rights Reserved.
           </Typography>
         </Box>
       </Container>

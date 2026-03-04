@@ -15,27 +15,24 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Logo from './Logo';
 
 const navLinks = [
-  { label: 'Philosophy', path: '/philosophy' },
+  { label: 'Home', path: '/' },
+  { label: 'Focus', path: '/focus' },
+  { label: 'Portfolio', path: '/portfolio' },
   { label: 'Approach', path: '/approach' },
-  { label: 'Investments', path: '/investments' },
+  { label: 'Contact', path: '/contact' },
 ];
 
 const Navigation = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
-  };
-
-  const handleContactClick = () => {
-    navigate('/contact-us');
   };
 
   const drawer = (
@@ -58,12 +55,13 @@ const Navigation = () => {
             <ListItemButton
               component={NavLink}
               to={link.path}
+              end={link.path === '/'}
               onClick={handleDrawerToggle}
               sx={{
                 borderRadius: '12px',
                 py: 1.5,
                 '&.active': {
-                  bgcolor: 'rgba(192, 57, 43, 0.08)',
+                  bgcolor: 'rgba(228, 61, 48, 0.08)',
                   color: 'primary.main',
                   fontWeight: 600,
                 },
@@ -82,17 +80,6 @@ const Navigation = () => {
             </ListItemButton>
           </ListItem>
         ))}
-        <ListItem disablePadding sx={{ mt: 3 }}>
-          <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            onClick={() => { handleContactClick(); handleDrawerToggle(); }}
-            sx={{ borderRadius: '12px', py: 1.5 }}
-          >
-            Contact Us
-          </Button>
-        </ListItem>
       </List>
     </Box>
   );
@@ -109,7 +96,7 @@ const Navigation = () => {
         <Toolbar
           sx={{
             justifyContent: 'space-between',
-            py: 2,
+            py: 0.5,
             px: { xs: 2, sm: 4, md: 6 },
             maxWidth: '1400px',
             mx: 'auto',
@@ -121,13 +108,14 @@ const Navigation = () => {
             <Logo />
           </Box>
 
-          {/* Right: Nav Links + Contact Button (Desktop) */}
+          {/* Right: Nav Links (Desktop) */}
           {!isMobile && (
             <Box sx={{ display: 'flex', gap: 4, alignItems: 'center' }}>
               {navLinks.map((link) => (
                 <NavLink
                   key={link.path}
                   to={link.path}
+                  end={link.path === '/'}
                   style={{ textDecoration: 'none' }}
                 >
                   {({ isActive }) => (
@@ -164,14 +152,6 @@ const Navigation = () => {
                   )}
                 </NavLink>
               ))}
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleContactClick}
-                sx={{ ml: 2 }}
-              >
-                Contact Us
-              </Button>
             </Box>
           )}
 
@@ -198,7 +178,7 @@ const Navigation = () => {
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true, // Better mobile performance
+          keepMounted: true,
         }}
       >
         {drawer}
