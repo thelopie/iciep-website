@@ -106,7 +106,7 @@ const Portfolio = () => {
                   <Button
                     variant="outlined"
                     size="large"
-                    href="https://www.mainsailanalytics.com"
+                    href="https://mainsailanalytics.ai/"
                     target="_blank"
                     rel="noopener noreferrer"
                     endIcon={<OpenInNewIcon />}
