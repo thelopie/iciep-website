@@ -188,53 +188,57 @@ const Approach = () => {
             {/* Value Creation Framework & Long-Term Alignment */}
             <Grid container spacing={4}>
               <Grid item xs={12} md={6}>
-                <Box
+                <Paper
+                  elevation={0}
                   sx={{
-                    display: 'inline-flex',
-                    p: 1.5,
-                    borderRadius: '10px',
-                    bgcolor: 'rgba(228, 61, 48, 0.08)',
-                    color: 'primary.main',
-                    mb: 2,
+                    p: 4,
+                    height: '100%',
+                    border: '1px solid',
+                    borderColor: 'grey.200',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    '&:hover': {
+                      borderColor: 'primary.main',
+                      transform: 'translateY(-4px)',
+                      boxShadow: '0 20px 40px -10px rgba(228, 61, 48, 0.12)',
+                    },
                   }}
                 >
-                  <InsightsIcon sx={{ fontSize: 32 }} />
-                </Box>
+                  <Box
+                    sx={{
+                      display: 'inline-flex',
+                      p: 1.5,
+                      borderRadius: '10px',
+                      bgcolor: 'rgba(228, 61, 48, 0.08)',
+                      color: 'primary.main',
+                      mb: 2,
+                    }}
+                  >
+                    <InsightsIcon sx={{ fontSize: 32 }} />
+                  </Box>
 
-                <Typography variant="h5" sx={{ mb: 2, color: 'text.primary', fontWeight: 700 }}>
-                  Value Creation Framework
-                </Typography>
+                  <Typography variant="h5" sx={{ mb: 2, color: 'text.primary', fontWeight: 700 }}>
+                    Value Creation Framework
+                  </Typography>
 
-                <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8, mb: 2 }}>
-                  We concentrate on initiatives that strengthen durability and scalability:
-                </Typography>
+                  <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8, mb: 2 }}>
+                    We concentrate on initiatives that strengthen durability and scalability:
+                  </Typography>
 
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-                  {[
-                    'Revenue model optimization',
-                    'Operational process improvement',
-                    'Talent alignment and accountability',
-                    'Data-driven performance management',
-                    'Strategic add-on opportunities where appropriate',
-                  ].map((item, index) => (
-                    <Box
-                      key={index}
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 2,
-                        p: 1.5,
-                        borderRadius: '10px',
-                        bgcolor: 'grey.50',
-                        border: '1px solid',
-                        borderColor: 'grey.200',
-                      }}
-                    >
-                      <Box sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: 'primary.main', flexShrink: 0 }} />
-                      <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500 }}>{item}</Typography>
-                    </Box>
-                  ))}
-                </Box>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mb: 2 }}>
+                    {[
+                      'Revenue model optimization',
+                      'Operational process improvement',
+                      'Talent alignment and accountability',
+                      'Data-driven performance management',
+                      'Strategic add-on opportunities where appropriate',
+                    ].map((item, index) => (
+                      <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                        <Box sx={{ width: 5, height: 5, borderRadius: '50%', bgcolor: 'primary.main', flexShrink: 0 }} />
+                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>{item}</Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                </Paper>
               </Grid>
 
               <Grid item xs={12} md={6}>

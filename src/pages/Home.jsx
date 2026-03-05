@@ -68,8 +68,9 @@ const Home = () => {
                       fontWeight: 800,
                     }}
                   >
-                    Building and investing in SaaS and services businesses that power{' '}
-                    <Box component="span" sx={{ color: 'primary.main' }}>private equity</Box>.
+                    Building and Investing in{' '}
+                    <Box component="span" sx={{ color: 'primary.main' }}>businesses that power</Box>{' '}
+                    Private Equity.
                   </Typography>
 
                   <Typography
