@@ -82,7 +82,7 @@ const Focus = () => {
             </Typography>
 
             <Grid container spacing={4} sx={{ mb: { xs: 6, md: 8 } }}>
-              {/* SaaS for Private Equity */}
+              {/* Technology for Private Equity */}
               <Grid item xs={12} md={6}>
                 <Paper
                   elevation={0}
@@ -113,7 +113,7 @@ const Focus = () => {
                   </Box>
 
                   <Typography variant="h5" sx={{ mb: 2, color: 'text.primary', fontWeight: 700 }}>
-                    SaaS for Private Equity
+                    Technology for Private Equity
                   </Typography>
 
                   <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8, mb: 2 }}>
@@ -219,7 +219,7 @@ const Focus = () => {
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, mt: 2 }}>
                   {[
                     'Lower middle market',
-                    'Control-oriented structures',
+                    'Flexible structures including minority investments',
                     'Founder transitions and platform builds',
                     'Recurring or highly repeat business models',
                     'Strong customer retention within the PE ecosystem',

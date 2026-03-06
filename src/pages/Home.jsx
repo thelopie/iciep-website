@@ -214,7 +214,7 @@ const Home = () => {
                     <CodeIcon sx={{ fontSize: 40 }} />
                   </Box>
                   <Typography variant="h5" sx={{ mb: 2, fontWeight: 700, color: 'text.primary' }}>
-                    SaaS for Private Equity
+                    Technology for Private Equity
                   </Typography>
                   <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
                     Mission-critical software that enhances investment operations, portfolio monitoring,
@@ -384,8 +384,8 @@ const Home = () => {
                       fontStyle: 'italic',
                     }}
                   >
-                    A SaaS platform that harnesses the power of machine learning and generative AI
-                    to deliver purpose-built solutions for private equity-backed businesses.
+                    A proprietary value-creation platform for private equity firms and portfolio
+                    companies in transitions or in transactions.
                   </Typography>
                   <Typography
                     variant="body1"
