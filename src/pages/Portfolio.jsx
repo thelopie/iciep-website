@@ -98,9 +98,9 @@ const Portfolio = () => {
                     }}
                   >
                     Mainsail Analytics is a proprietary value-creation platform for private equity firms
-                    and portfolio companies in transitions or in transactions. Its AI-enabled applications
-                    improve diligence, drive procurement-led EBITDA expansion, and enhance portfolio
-                    visibility through VirtualCPO, Deal Focus, and FundVUE.
+                    and portfolio companies undergoing transitions or transactions. Its AI-enabled
+                    applications improve diligence, drive procurement-led EBITDA expansion, and enhance
+                    portfolio visibility through VirtualCPO, Deal Focus, and FundVUE.
                   </Typography>
 
                   <Button

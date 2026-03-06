@@ -384,18 +384,10 @@ const Home = () => {
                       fontStyle: 'italic',
                     }}
                   >
-                    A proprietary value-creation platform for private equity firms and portfolio
-                    companies in transitions or in transactions.
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color: 'text.secondary',
-                      lineHeight: 1.8,
-                    }}
-                  >
-                    As founders and operators, we work closely with management to refine strategy,
-                    strengthen operations, and support sustainable growth.
+                    Mainsail Analytics is a proprietary value-creation platform for private equity firms
+                    and portfolio companies undergoing transitions or transactions. Its AI-enabled
+                    applications improve diligence, drive procurement-led EBITDA expansion, and enhance
+                    portfolio visibility through VirtualCPO, Deal Focus, and FundVUE.
                   </Typography>
                 </Paper>
               </Grid>
