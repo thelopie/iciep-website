@@ -290,11 +290,12 @@ const Home = () => {
                     <GpsFixedIcon sx={{ fontSize: 40 }} />
                   </Box>
                   <Typography variant="h5" sx={{ mb: 2, fontWeight: 700, color: 'text.primary' }}>
-                    Control-Oriented Investments
+                    Control or Minority Investments
                   </Typography>
                   <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
-                    Lower middle market opportunities with recurring revenue characteristics,
-                    strong customer retention, and durable market positioning.
+                    Control or minority investments in lower middle market companies with recurring
+                    revenue, strong customer retention, durable market positioning, and compelling
+                    growth prospects.
                   </Typography>
                 </Paper>
               </Grid>
